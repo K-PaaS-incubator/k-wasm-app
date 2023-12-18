@@ -11,7 +11,7 @@ K-WASM 앱 구현을 위한 레파지토리입니다.
   
 <구현 앱>
 1. app-manager
- - MSA 아키텍처 적요에 따른 다양한 앱을 관리하는 UI 앱 서비스
+ - MSA 아키텍처 적용에 따른 다양한 앱을 관리하는 UI 앱 서비스
  - 적용 프레임워크 : Spring Boot Admin
      
 2. config-file
