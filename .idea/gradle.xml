@@ -27,6 +27,14 @@
           </set>
         </option>
       </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/ui-html" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/ui-html" />
+          </set>
+        </option>
+      </GradleProjectSettings>
     </option>
   </component>
 </project>
