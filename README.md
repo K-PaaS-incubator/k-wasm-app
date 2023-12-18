@@ -27,4 +27,4 @@ K-WASM 앱 구현을 위한 레파지토리입니다.
  - 적용 프레임워크 : Spring Cloud Netflix Eureka Server, Spring Boot Actuator
 
 5. ui-html
- - HTML 기반 K-WWASM앱 UI
+ - HTML 기반 K-WASM앱 UI
