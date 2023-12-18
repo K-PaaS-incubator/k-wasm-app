@@ -3,7 +3,7 @@
 K-WASM 앱 구현을 위한 레파지토리입니다.
 
 <개발환경>
- - 언어 : 자바 17
+ - 언어 : 자바 17(OpenJDK 가능)
  - 공통 주요 프레임워크 : Spring Boot Frameworks 3.16
  - 개발도구 : IntelliJ
  - 빌드도구 : Gradle 8.5
