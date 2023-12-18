@@ -1,0 +1,13 @@
+
+server:
+  port: 8888
+spring:
+  application:
+    name: config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/K-PaaS-incubator/k-wasm-app/config-file
+          default-label: master
+          search-paths: kwasm
