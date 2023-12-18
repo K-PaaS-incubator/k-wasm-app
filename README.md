@@ -24,4 +24,4 @@ K-WASM 앱 구현을 위한 레파지토리입니다.
 
 4. eureka-server
  -  서비스 디스커버리 등 서비스 관리를 위해 구현
- - 적용 프레임워크 : Spring Cloud Netflix Eureks Server, Spring Boot Actuator
+ - 적용 프레임워크 : Spring Cloud Netflix Eureka Server, Spring Boot Actuator
