@@ -37,5 +37,10 @@ K-WASM 앱 구현을 위한 레파지토리입니다.
  - 도커 이미지 생성 파일 및 도커 버전 : Dockerfile / version 4.26.1
  - 도커 이미지 파일 다운로드 링크 : https://hub.docker.com/repository/docker/leehyeopgeon/ui-html/general
 
-6. test-data
+6. api-gateway
+ - MSA 아키텍처 구현을 위해 API-GATEWAAY 적용
+ - 특이사항 : Spring Boot Frameworks 3.2.1 적용
+ - 적용 프레임워크 : Reactive 기반 Spring Cloud Gateway
+     
+7. test-data
  - WASM 컴파일 테스트하기 위한 프로그래밍언어 파일 
