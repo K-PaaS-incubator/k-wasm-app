@@ -7,7 +7,7 @@ K-WASM 앱 구현을 위한 레파지토리입니다.
  - 공통 주요 프레임워크 : Spring Boot Frameworks 3.16
  - 개발도구 : IntelliJ
  - 빌드도구 : Gradle 8.5
- - 인프라 환경 : K-PaaS 인프라 적용(Ubuntu 22.04)
+ - 인프라 환경 : K-PaaS 인프라 적용(Ubuntu 22.04, CentOS 8, Rocky Linux 8)
  - Docker 버전 : 4.26.1 테스트 진행
   
 <구현 앱>
