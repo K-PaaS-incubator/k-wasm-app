@@ -8,6 +8,7 @@ K-WASM 앱 구현을 위한 레파지토리입니다.
  - 개발도구 : IntelliJ
  - 빌드도구 : Gradle 8.5
  - 인프라 환경 : K-PaaS 인프라 적용
+ - Docker 버전 : 4.26.1 테스트 진행
   
 <구현 앱>
 1. app-manager
