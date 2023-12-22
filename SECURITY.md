@@ -8,5 +8,8 @@ K-WASM 앱의 지원되는 버전은 다음과 같습니다.
 
 | Version | Supported                             |
 | ------- | ------------------------------------- |
-|  0.01   | Spring Boot Frameworks 3.16 / Java 17 |
+|  0.01   | Frameworks : Spring Boot Frameworks 3.16
+            Language : Java 17
+            OS : CentOS 8 Later, Ubuntu 18.04 >=
+                 
 
