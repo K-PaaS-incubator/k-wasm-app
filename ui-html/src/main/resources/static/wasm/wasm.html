@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Editor</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/wasm.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<!--Navigation Bar Start-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">K -WASM </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">K-WASM 예제 실행<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://github.com/K-PaaS-incubator/k-wasm-app" target="_blank" >K-WASM GitHub</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!--Navigation Bar End-->
+
+<!-- Styled Heading -->
+<h1 class="display-3">K-WASM 서비스</h1>
+
+<div class="container mt-3">
+
+    <div class="form-group language-btn">
+        <div class="language-label">
+            <span>언어 :</span>
+            <button type="button" class="btn btn-language">Rust</button>
+        </div>
+        <textarea class="form-control" id="editor" placeholder="코드를 작성해주세요."></textarea>
+
+        <button type="button" class="btn btn-execute">실행 하기</button>
+
+        <button type="button" class="btn btn-execute" id="uploadButton">파일 가져오기</button>
+
+
+        <input type="file" id="fileInput" style="display: none">
+    </div>
+</div>
+
+
+<script src="/js/wasm.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+/* 기존 스타일 유지 */
+#editor {
+    min-height: 350px;
+    font-family: monospace;
+}
+.language-btn {
+    margin-top: 20px;
+}
+.btn-language {
+    background-color: #000;
+    color: #fff;
+    margin-right: 10px; /
+}
+.language-label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.language-label span {
+    padding: .375rem .75rem;
+    font-size: 2rem;
+    margin-right: 10px;
+}
+h1 {
+    text-align: center; /* 가운데 정렬 */
+    font-family: 'Arial', sans-serif; /* 폰트 스타일 */
+    font-weight: bold; /* 굵기 */
+    font-size: rem; /* 증가된 글자 크기 */
+    margin-top: 30px; /* 상단 여백 증가 */
+    color: #333; /* Text color */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for depth */
+}
+.btn-execute {
+    width: 25%; /* 너비: 컨테이너의 1/4 */
+    padding: 10px; /* 패딩 */
+    font-size: 1rem; /* 글자 크기 */
+    background-color: #000; /* 검은색 배경 */
+    color: #fff; /* 흰색 글자 */
+    margin-top: 20px; /* 위쪽 여백 */
+    float: right; /* 오른쪽 정렬 */
+    margin-right: 10px; /* 오른쪽 마진 추가 */
+}
+/* 전체 배경색 변경 */
+body {
+    background-color: rgb(244, 243, 234); /* 배경색 지정 */
+    display: flex; /* Flexbox 사용 */
+    flex-direction: column; /* 세로 방향 정렬 */
+}
+/* 컨테이너 크기 및 정렬 조정 */
+.container {
+    width: 100%; /* 전체 너비 */
+    max-width: 800px; /* 최대 너비 */
+    margin-top: 50vh; /* 상단 여백 증가 */
+}
