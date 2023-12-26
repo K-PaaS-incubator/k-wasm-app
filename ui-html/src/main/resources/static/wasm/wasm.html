@@ -7,53 +7,97 @@
     <!-- Include Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/wasm.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="/js/jquery-3.6.0.min.js"></script>
+    <script>
+        // HTML로딩이 완료되고, 실행됨
+        $(document).ready(function () {
 
+            // 실행하기 클릭
+            $("#btnExecute").on("click", function () {
+
+                const formData = new FormData();
+                formData.append("fileUpload", $("#fileUpload").files[0]);
+
+                $.ajax({
+                    type: "POST",
+                    url: "/api/upload/v1",
+                    processData: false,
+                    contentType: false,
+                    data: formData,
+                    success: function (rtn) {
+                        // const message = rtn.data.values[0];
+                        // console.log("message: ", message)
+                        // $("#resultUploadPath").text(message.uploadFilePath)
+                    },
+                    err: function (err) {
+                        console.log("err:", err)
+                    }
+                })
+            })
+
+            // 파일 가져오기 클릭
+            $("#btnFile").on("click", function () {
+                $("#fileUpload").click()
+            })
+
+            // 파일 가져오기 눌렀을때, 값 출력하기
+            $("#fileUpload").on("change", function () {
+                let file = this.files[0];
+                if (file) {
+                    let reader = new FileReader();
+                    reader.readAsText(file, "UTF-8");
+                    reader.onload = function (evt) {
+                        document.getElementById('editor').value = evt.target.result;
+                    }
+                    reader.onerror = function (evt) {
+                        alert("파일을 읽는 동안 오류가 발생했습니다.");
+                    }
+                }
+            })
+        })
+    </script>
 </head>
 <body>
-<!--Navigation Bar Start-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">K -WASM </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">K-WASM 예제 실행<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="https://github.com/K-PaaS-incubator/k-wasm-app" target="_blank" >K-WASM GitHub</a>
-            </li>
-        </ul>
-    </div>
-</nav>
-<!--Navigation Bar End-->
-
-<!-- Styled Heading -->
-<h1 class="display-3">K-WASM 서비스</h1>
-
-<div class="container mt-3">
-
-    <div class="form-group language-btn">
-        <div class="language-label">
-            <span>언어 :</span>
-            <button type="button" class="btn btn-language">Rust</button>
+<form name="f" method="post" enctype="multipart/form-data" action="/FileUpload">
+    <!--Navigation Bar Start-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">K -WASM </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">K-WASM 예제 실행<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/K-PaaS-incubator/k-wasm-app" target="_blank">K-WASM
+                        GitHub</a>
+                </li>
+            </ul>
         </div>
-        <textarea class="form-control" id="editor" placeholder="코드를 작성해주세요."></textarea>
+    </nav>
+    <!--Navigation Bar End-->
 
-        <button type="button" class="btn btn-execute">실행 하기</button>
+    <!-- Styled Heading -->
+    <h1 class="display-3">K-WASM 서비스</h1>
 
-        <button type="button" class="btn btn-execute" id="uploadButton">파일 가져오기</button>
+    <div class="container mt-3">
 
-
-        <input type="file" id="fileInput" style="display: none">
+        <div class="form-group language-btn">
+            <div class="language-label">
+                <span>언어 :</span>
+                <button type="button" class="btn btn-language">Rust</button>
+            </div>
+            <textarea class="form-control" id="editor" placeholder="코드를 작성해주세요."></textarea>
+            <button type="button" class="btn btn-execute" id="btnExecute">실행 하기</button>
+            <button type="button" class="btn btn-execute" id="btnFile">파일 가져오기</button>
+            <input type="file" id="fileUpload" style="display: none">
+        </div>
     </div>
-</div>
 
-
-<script src="/js/wasm.js"></script>
-
+</form>
 </body>
 </html>
