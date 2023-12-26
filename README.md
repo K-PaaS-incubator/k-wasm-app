@@ -17,7 +17,7 @@ K-WASM 앱 구현을 위한 레파지토리입니다.
  - 도커 이미지 생성 파일 및 도커 버전 : Dockerfile / version 4.26.1
  - 도커 이미지 파일 다운로드 링크 : https://hub.docker.com/repository/docker/leehyeopgeon/app-manager/general
      
-2. config-file
+2. kwasm-config
  - 앱에 적용된 환경 설정 분리를 위해 환경설정 파일들이 저장되는 저장소
  - 적용 프레임워크 : 없음
       
