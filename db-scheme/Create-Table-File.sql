@@ -1,3 +1,5 @@
+-- 컴파일할 파일 정보를 저장하는 RDBMS 테이블 생성 SQL
+
 CREATE TABLE `FILE`
 (
     `FILE_SEQ`         bigint(20) NOT NULL AUTO_INCREMENT,
