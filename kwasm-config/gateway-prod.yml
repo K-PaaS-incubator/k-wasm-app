@@ -1,0 +1,31 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+    beans:
+      enabled: true
+    info:
+      enabled: true
+    shutdown:
+      enabled: true
+  server:
+    address: localhost
+    port: 13001
+eureka:
+  client:
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    fetch-registry: true
+spring:
+  application:
+    name: API-GATEWAY
+  boot:
+    admin:
+      client: # Spring Boot Actuator Admin UI Server
+        url: http://localhost:15000
