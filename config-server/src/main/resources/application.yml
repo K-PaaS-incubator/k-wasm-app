@@ -8,6 +8,6 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/K-PaaS-incubator/k-wasm-app/config-file
-          default-label: master
-          search-paths: kwasm
+          uri: https://github.com/K-PaaS-incubator/k-wasm-app
+          default-label: main
+          search-paths: config-file
