@@ -6,15 +6,14 @@ import kr.or.kpass.kwasm.service.IFileUploadService;
 import kr.or.kpass.kwasm.util.DateUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-public class WasmController {
+@RequestMapping(value = "api/v1")
+public class KwasmController {
 
 
     private final IFileUploadService fileUploadService;
@@ -24,7 +23,7 @@ public class WasmController {
      * @return 저장된 파일 url
      * @throws Exception
      */
-    @PostMapping("FileUpload")
+    @PostMapping("upload")
     public int fileUpload(@RequestParam(value = "fileUpload") MultipartFile mf) throws Exception {
 
         log.info(getClass().getName() + "FileUpload 시작");

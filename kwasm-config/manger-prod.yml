@@ -1,0 +1,40 @@
+cloud:
+  aws:
+    credentials:
+      secret-key: UTSgnAn1ke35fyLiqfUMCQ49nnWJBaXxwt0iJKlU
+      access-key: 8dMZABPGyJBdWbx24GRR
+    s3:
+      bucket: findme
+    region:
+      static: kr-standard
+    stack:
+      auto: 'false'
+spring:
+  jpa:
+    generate-ddl: 'false'
+    properties:
+      hibernate:
+        generate_statistics: 'false'
+        use_sql_comments: 'true'
+        format_sql: 'true'
+    hibernate:
+      ddl-auto: create
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: 'true'
+    open-in-view: 'false'
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  datasource:
+    password: '1234'
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: poly
+    url: jdbc:mariadb://101.101.210.215:3306/myDB
+Cloud:
+  aws:
+    s3:
+      endPoint: kr.object.ncloudstorage.com
+server:
+  port: '11000'
