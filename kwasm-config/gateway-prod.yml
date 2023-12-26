@@ -15,7 +15,7 @@ management:
       enabled: true
   server:
     address: localhost
-    port: 13001
+    port: 14001
 eureka:
   client:
     register-with-eureka: true
@@ -29,3 +29,5 @@ spring:
     admin:
       client: # Spring Boot Actuator Admin UI Server
         url: http://localhost:15000
+server:
+  port: '14000'
