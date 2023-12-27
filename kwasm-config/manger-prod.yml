@@ -1,14 +1,5 @@
-cloud:
-  aws:
-    credentials:
-      secret-key: UTSgnAn1ke35fyLiqfUMCQ49nnWJBaXxwt0iJKlU
-      access-key: 8dMZABPGyJBdWbx24GRR
-    s3:
-      bucket: findme
-    region:
-      static: kr-standard
-    stack:
-      auto: 'false'
+server:
+  port: '11000'
 spring:
   jpa:
     generate-ddl: 'false'
@@ -29,12 +20,19 @@ spring:
       max-request-size: 10MB
   datasource:
     password: '1234'
-    username: poly
-    driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://localhost:3306/myDB
+    username: 'poly'
+    driver-class-name: 'org.mariadb.jdbc.Driver'
+    url: 'jdbc:mariadb://localhost:3306/myDB'
 Cloud:
   aws:
     s3:
       endPoint: kr.object.ncloudstorage.com
-server:
-  port: '11000'
+      bucket: findme
+    credentials:
+      secret-key: UTSgnAn1ke35fyLiqfUMCQ49nnWJBaXxwt0iJKlU
+      access-key: 8dMZABPGyJBdWbx24GRR
+    region:
+      static: kr-standard
+    stack:
+      auto: 'false'
+
