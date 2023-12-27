@@ -29,9 +29,9 @@ spring:
       max-request-size: 10MB
   datasource:
     password: '1234'
-    driver-class-name: org.mariadb.jdbc.Driver
     username: poly
-    url: jdbc:mariadb://101.101.210.215:3306/myDB
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3306/myDB
 Cloud:
   aws:
     s3:
