@@ -33,13 +33,12 @@ public class FileUploadService implements IFileUploadService {
 
     private final FileRepository fileRepository;
 
-
     @Value("${cloud.aws.s3.bucket}")
     private String bucket;
 
     @Override
     public String upload(MultipartFile mf, String fileName) throws Exception {
-        log.info(this.getClass().getName() + "스토리지 업로드 시작 !");
+        log.info(this.getClass().getName() + " Object Storage Upload Start!");
 
 
         // 저장할 이미지 URL
@@ -59,7 +58,7 @@ public class FileUploadService implements IFileUploadService {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "파일 업로드에 실패했습니다.");
         }
 
-        log.info(this.getClass().getName() + "스토리지 업로드 끝 !");
+        log.info(this.getClass().getName() + " Object Storage Upload End!");
 
         return imageUrl;
     }
@@ -84,9 +83,9 @@ public class FileUploadService implements IFileUploadService {
     @Override
     @Transactional
     public int saveFileData(FileDTO pDTO) throws Exception {
-        log.info(getClass().getName() + "파일 데이터 저장 시작");
+        log.info(getClass().getName() + " Meta Data saveFileData Start!");
 
-        int res = 0;
+        int res;
 
         FileEntity pEntity = FileEntity.builder()
                 .orgFileName(pDTO.orgFileName())
@@ -98,6 +97,8 @@ public class FileUploadService implements IFileUploadService {
         fileRepository.save(pEntity);
 
         res = 1;
+
+        log.info(getClass().getName() + " Meta Data saveFileData End!");
 
         return res;
     }
