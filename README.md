@@ -23,13 +23,17 @@ K-WASM 앱 구현을 위한 레파지토리입니다.
       
 3. config-server
  - 환경 설정을 위해 Spring Cloud Config Server를 적용한 Config Server
- - 적용 프레임워크 : Spring Cloud Config Server
+ - 적용 프레임워크
+     * Spring Cloud Config Server
+     * Spring Boot Web
  - 도커 이미지 생성 파일 및 도커 버전 : Dockerfile / version 4.26.1
  - 도커 이미지 파일 다운로드 링크 : https://hub.docker.com/repository/docker/leehyeopgeon/config-server/general
 
 4. eureka-server
  -  서비스 디스커버리 등 서비스 관리를 위해 구현
- - 적용 프레임워크 : Spring Cloud Netflix Eureka Server, Spring Boot Actuator
+ - 적용 프레임워크 :
+    * Spring Cloud Netflix Eureka Server
+    * Spring Boot Actuator
  - 도커 이미지 생성 파일 및 도커 버전 : Dockerfile / version 4.26.1
  - 도커 이미지 파일 다운로드 링크 : https://hub.docker.com/repository/docker/leehyeopgeon/eureka-server/general
    
@@ -40,8 +44,28 @@ K-WASM 앱 구현을 위한 레파지토리입니다.
 
 6. api-gateway
  - MSA 아키텍처 구현을 위해 API-GATEWAAY 적용
- - 특이사항 : Spring Boot Frameworks 3.2.1 적용
- - 적용 프레임워크 : Reactive 기반 Spring Cloud Gateway
-     
-7. test-data
+ - 적용 프레임워크
+   * Reactive 기반 Spring Cloud Gateway
+   * Spring Boot Actuator
+   * Spring Boot Admin Client
+   * Spring Cloud Config Client
+   * Spring Cloud Netflix Eureka Client
+
+7. wasm-manager
+ - K-WASM 메타 데이터 생성 및 관리
+ - 적용 프레임워크
+   * Spring Boot Web
+   * Spring Boot Actuator
+   * Spring Boot Admin Client
+   * Spring Data JPA
+   * Spring Cloud Config Client
+   * Spring Cloud Netflix Eureka Client
+          
+8. test-data
  - WASM 컴파일 테스트하기 위한 프로그래밍언어 파일 
+
+9. db-scheme
+ - K-WASM Manager에서 관리하는 메타정보 생성을 위한 SQL
+
+10. kwasm-result-sample
+  - test-data의 샘플 C언어를 K-WASM으로 컴파일한 결과 샘플
