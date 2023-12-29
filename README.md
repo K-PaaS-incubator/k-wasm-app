@@ -45,3 +45,9 @@ K-WASM 앱 구현을 위한 레파지토리입니다.
      
 7. test-data
  - WASM 컴파일 테스트하기 위한 프로그래밍언어 파일 
+
+8. db-scheme
+ - K-WASM Manager에서 관리하는 메타정보 생성을 위한 SQL
+
+9. kwasm-result-sample
+  - test-data의 샘플 C언어를 K-WASM으로 컴파일한 결과 샘플
