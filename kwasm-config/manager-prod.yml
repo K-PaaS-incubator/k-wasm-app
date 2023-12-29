@@ -23,6 +23,12 @@ spring:
     username: 'poly'
     driver-class-name: 'org.mariadb.jdbc.Driver'
     url: 'jdbc:mariadb://localhost:3306/myDB'
+  application:
+    name: KWASM-MANAGER
+  boot:
+    admin:
+      client: # Spring Boot Actuator Admin UI Server
+        url: http://localhost:15000
 Cloud:
   aws:
     s3:
