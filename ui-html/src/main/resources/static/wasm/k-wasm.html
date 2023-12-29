@@ -17,21 +17,28 @@
             $("#btnExecute").on("click", function () {
 
                 const formData = new FormData();
-                formData.append("fileUpload", $("#fileUpload").files[0]);
+                formData.append("fileUpload", $("#fileUpload")[0].files[0]);
 
                 $.ajax({
-                    type: "POST",
                     url: "http://localhost:11000/api/v1/upload",
+                    type: "post", // 전송방식은 Post
+                    data: formData,
                     processData: false,
                     contentType: false,
-                    data: formData,
-                    success: function (rtn) {
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    dataType: "JSON", // 전송 결과는 JSON으로 받기
+                    success: function (json) {
                         // const message = rtn.data.values[0];
                         // console.log("message: ", message)
                         // $("#resultUploadPath").text(message.uploadFilePath)
                     },
-                    err: function (err) {
-                        console.log("err:", err)
+                    // error: function (request, status, error) {
+                    error: function () {
+                        alert("접근 권한이 없습니다.");
+                        location.href = loginPage;
+
                     }
                 })
             })
