@@ -9,25 +9,30 @@ import com.amazonaws.services.s3.model.PutObjectRequest;
 import kr.or.kpass.kwasm.dto.FileDTO;
 import kr.or.kpass.kwasm.repository.FileRepository;
 import kr.or.kpass.kwasm.repository.entity.FileEntity;
-import kr.or.kpass.kwasm.service.IFileUploadService;
+import kr.or.kpass.kwasm.service.IFileManageService;
 import kr.or.kpass.kwasm.util.FileUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StreamUtils;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class FileUploadService implements IFileUploadService {
+public class FileManageService implements IFileManageService {
 
     private final AmazonS3Client amazonS3;
 
@@ -91,9 +96,16 @@ public class FileUploadService implements IFileUploadService {
         log.info(path);
 
         // 파일 저장
-        mf.transferTo(new File(path + pDTO.serverFileName()));
+        mf.transferTo(new File(path + "/" + pDTO.serverFileName()));
 
-        FileDTO rDTO = FileDTO.builder().saveFilePath(path).serverFileName(pDTO.serverFileName()).build();
+        if (new File(path + "/" + pDTO.serverFileName()).exists()) {
+            log.info("File Upload Success!");
+
+        }
+
+        FileDTO rDTO = FileDTO.builder().saveFilePath(path)
+                .saveFileName(pDTO.saveFileName())
+                .ext(pDTO.ext()).serverFileName(pDTO.serverFileName()).build();
 
         log.info(this.getClass().getName() + " uploadFileSystem End!");
 
@@ -128,9 +140,12 @@ public class FileUploadService implements IFileUploadService {
 
         FileEntity pEntity = FileEntity.builder()
                 .orgFileName(pDTO.orgFileName())
-                .serverFileName(pDTO.serverFileName())
-                .serverFileUrl(pDTO.serverFileUrl())
+                .saveFileName(pDTO.saveFileName())
+                .saveFilePath(pDTO.saveFilePath())
                 .ext(pDTO.ext())
+                .serverFileName("")
+                .serverFileUrl("")
+                .regDt(pDTO.regDt())
                 .build();
 
         fileRepository.save(pEntity);
@@ -142,4 +157,49 @@ public class FileUploadService implements IFileUploadService {
         return res;
     }
 
+    /**
+     * 컴파일된 WASM 결과 파일들 압축하기
+     *
+     * @param pDTO 저장될 파일정보
+     * @return 생성된 압축 파일 정보
+     */
+    @Override
+    public FileDTO compressionZipFileSystem(FileDTO pDTO) throws Exception {
+
+        log.info(getClass().getName() + " compressionZip Start!");
+
+        // 압축할 파일들이 저장된 디렉토리
+        String dir = pDTO.saveFilePath();
+        log.info("dir : " + dir);
+
+        // 생성항 압축 파일명
+        String zipFile = dir + "/" + pDTO.saveFileName() + ".zip";
+        log.info("zipFile : " + zipFile);
+
+        // 압축할 파일들
+        String[] fileNames = new File(dir).list();
+
+        FileOutputStream fos = new FileOutputStream(zipFile); // 생성할 Zip 파일
+
+        ZipOutputStream zipOutputStream = new ZipOutputStream(fos);
+        for (String fileName : fileNames) {
+
+            log.info("fileName :" + fileName);
+            FileSystemResource fileSystemResource = new FileSystemResource(dir + "/" + fileName);
+            ZipEntry zipEntry = new ZipEntry(fileSystemResource.getFilename());
+            zipEntry.setSize(fileSystemResource.contentLength());
+            zipEntry.setTime(System.currentTimeMillis());
+            zipOutputStream.putNextEntry(zipEntry);
+            StreamUtils.copy(fileSystemResource.getInputStream(), zipOutputStream);
+            zipOutputStream.closeEntry();
+        }
+        zipOutputStream.finish();
+
+        FileDTO rDTO = FileDTO.builder().saveFilePath(dir)
+                .saveFileName(pDTO.saveFileName())
+                .ext("zip").build();
+        log.info(getClass().getName() + " compressionZip End!");
+
+        return rDTO;
+    }
 }

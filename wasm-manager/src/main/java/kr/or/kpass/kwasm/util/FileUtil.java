@@ -17,7 +17,7 @@ public class FileUtil {
         // 업로드된 파일을 삭제함
         // 년월일 폴더를 생성하여 파일을 업로드하기에 30일이 지나면,
         // 해당되는 날짜 폴더만 삭제하면, 한번에 삭제되기에 관리가 쉬움
-        String path = uploadDir + DateUtil.getDateTime("/yyyy/MM/dd");
+        String path = uploadDir + DateUtil.getDateTime("/yyyy/MM/dd/HH/mm");
 
         File Folder = new File(path);
 

@@ -1,6 +1,7 @@
 package kr.or.kpass.kwasm.service;
 
 import kr.or.kpass.kwasm.dto.FileDTO;
+import org.springframework.web.multipart.MultipartFile;
 
 public interface IKwasmExecute {
 
@@ -9,5 +10,5 @@ public interface IKwasmExecute {
      *
      * @param pDTO 컴파일할 파일 정보
      */
-    int doExecuteKwasm(FileDTO pDTO) throws Exception;
+    FileDTO doExecuteKwasm(FileDTO pDTO, MultipartFile mf) throws Exception;
 }

@@ -3,7 +3,7 @@ package kr.or.kpass.kwasm.service;
 import kr.or.kpass.kwasm.dto.FileDTO;
 import org.springframework.web.multipart.MultipartFile;
 
-public interface IFileUploadService {
+public interface IFileManageService {
 
     /**
      * Object Storage 저장하기
@@ -35,4 +35,12 @@ public interface IFileUploadService {
      * 저장된 파일 메타 정보를 RDBMS 저장하기
      */
     int saveFileData(FileDTO pDTO) throws Exception;
+
+    /**
+     * 컴파일된 WASM 결과 파일들 압축하기
+     *
+     * @param pDTO 저장될 파일정보
+     * @return 생성된 압축 파일 정보
+     */
+    FileDTO compressionZipFileSystem(FileDTO pDTO) throws Exception;
 }

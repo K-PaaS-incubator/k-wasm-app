@@ -37,6 +37,14 @@
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/kwasm-sample-web" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/kwasm-sample-web" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/ui-html" />
         <option name="modules">
           <set>

@@ -24,17 +24,28 @@ public class FileEntity {
     @Column(name = "ORG_FILE_NAME", length = 1000, nullable = false)
     private String orgFileName;
 
-    @NonNull // 서버에 저장된 파일 이름
-    @Column(name = "SERVER_FILE_NAME", length = 1000, nullable = false)
-    private String serverFileName;
+    // 저장된 파일 이름
+    @Column(name = "SAVE_FILE_NAME", length = 1000, nullable = false)
+    private String saveFileName;
 
-    @NonNull  // 서버에 저장된 파일 URL
-    @Column(name = "SERVER_FILE_URL", length = 1000, nullable = false)
-    private String serverFileUrl;
+    // 저장된 파일 경로
+    @Column(name = "SAVE_FILE_PATH", length = 1000, nullable = false)
+    private String saveFilePath;
 
     @NonNull// 파일 확장자
     @Column(name = "EXT", length = 5, nullable = false)
     private String ext;
 
+    // Object Storage에 저장된 파일명
+    @Column(name = "SERVER_FILE_NAME", length = 1000, nullable = false)
+    private String serverFileName;
+
+    // Object Storage에 저장된 파일 URL
+    @Column(name = "SERVER_FILE_URL", length = 1000, nullable = false)
+    private String serverFileUrl;
+
+    // 파일 생성 일시
+    @Column(name = "REG_DT", length = 1000, nullable = false)
+    private String regDt;
 
 }
