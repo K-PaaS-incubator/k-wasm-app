@@ -10,6 +10,7 @@ import kr.or.kpass.kwasm.dto.FileDTO;
 import kr.or.kpass.kwasm.repository.FileRepository;
 import kr.or.kpass.kwasm.repository.entity.FileEntity;
 import kr.or.kpass.kwasm.service.IFileUploadService;
+import kr.or.kpass.kwasm.util.FileUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,7 +21,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -36,10 +36,19 @@ public class FileUploadService implements IFileUploadService {
     @Value("${cloud.aws.s3.bucket}")
     private String bucket;
 
-    @Override
-    public String upload(MultipartFile mf, String fileName) throws Exception {
-        log.info(this.getClass().getName() + " Object Storage Upload Start!");
+    String homeDir = "/kwasm/data"; // 컴파일될 파일 임시 저장소
 
+    /**
+     * Object Storage 저장하기
+     *
+     * @param mf   파일 데이터
+     * @param pDTO 저장될 파일정보
+     * @return 저장된 파일경로
+     */
+    @Override
+    public FileDTO uploadObjectStorage(MultipartFile mf, FileDTO pDTO) {
+
+        log.info(this.getClass().getName() + " uploadObjectStorage Start!");
 
         // 저장할 이미지 URL
         String imageUrl;
@@ -50,21 +59,49 @@ public class FileUploadService implements IFileUploadService {
 
         try (InputStream inputStream = mf.getInputStream()) {
 
-            amazonS3.putObject(new PutObjectRequest(bucket, fileName, inputStream, objectMetadata)
+            amazonS3.putObject(new PutObjectRequest(bucket, pDTO.serverFileName(), inputStream, objectMetadata)
                     .withCannedAcl(CannedAccessControlList.PublicRead));
-            imageUrl = amazonS3.getUrl(bucket, fileName).toString();
+            imageUrl = amazonS3.getUrl(bucket, pDTO.serverFileName()).toString();
 
         } catch (IOException e) {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "파일 업로드에 실패했습니다.");
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Fail to File Upload!");
         }
 
-        log.info(this.getClass().getName() + " Object Storage Upload End!");
+        FileDTO rDTO = FileDTO.builder().serverFileUrl(imageUrl).build();
 
-        return imageUrl;
+        log.info(this.getClass().getName() + " uploadObjectStorage End!");
+
+        return rDTO;
+    }
+
+    /**
+     * 파일시스템에 저장하기
+     *
+     * @param mf   파일 데이터
+     * @param pDTO 저장될 파일정보
+     * @return 저장된 파일경로
+     */
+    @Override
+    public FileDTO uploadFileSystem(MultipartFile mf, FileDTO pDTO) throws Exception {
+
+        log.info(this.getClass().getName() + " uploadFileSystem Start!");
+
+        // 저장될 폴더 생성 및 폴더 위치 가져오기
+        String path = FileUtil.mkdirForDate(homeDir);
+        log.info(path);
+
+        // 파일 저장
+        mf.transferTo(new File(path + pDTO.serverFileName()));
+
+        FileDTO rDTO = FileDTO.builder().saveFilePath(path).serverFileName(pDTO.serverFileName()).build();
+
+        log.info(this.getClass().getName() + " uploadFileSystem End!");
+
+        return rDTO;
     }
 
     @Override
-    public int fileDelete(String fileName) throws Exception {
+    public int deleteFileObjectStorage(String fileName) {
 
         int res = 0;
         try {
@@ -72,9 +109,11 @@ public class FileUploadService implements IFileUploadService {
             res = 1;
 
         } catch (AmazonS3Exception e) {
-            e.printStackTrace();
+            log.info("Error : " + e);
+
         } catch (SdkClientException e) {
-            e.printStackTrace();
+            log.info("Error : " + e);
+
         }
 
         return res;
