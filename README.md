@@ -93,23 +93,22 @@ K-WASM은 클라우드 네이티브 어플리케이션 기반으로 구현하는
 ## 실행방법
 1번부터 순서대로 앱을 배포 및 실행하길 권장함
 
-### 첫번째
-1. DB 배포
-    -  MariaDB or MySQL DB 및 테이블 생성(ORM을 사용하기에 테이블은 자동 생성)
-    -  테이블 생성 SQL은 db-scheme 디렉토리 참고
+### 1. DB 배포
+ -  MariaDB or MySQL DB 및 테이블 생성(ORM을 사용하기에 테이블은 자동 생성)
+ -  테이블 생성 SQL은 db-scheme 디렉토리 참고
   
-2. config-server 실행
+### 2. config-server 실행
    - 환경설정 변경은 application.yml 수정
   
-3. eureka-server 실행
+### 3. eureka-server 실행
 
-4. app-manager 실행
+### 4. app-manager 실행
 
-5. wasm-manager 실행
+### 5. wasm-manager 실행
 
-6. api-gateway 실행
+### 6. api-gateway 실행
 
-7. ui-html 실행
+### 7. ui-html 실행
    
 ## 라이센스
 
