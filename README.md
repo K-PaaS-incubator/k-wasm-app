@@ -33,10 +33,11 @@ K-WASM은 클라우드 네이티브 어플리케이션 기반으로 구현하는
      
 2. kwasm-config
  - 앱에 적용된 환경 설정 분리를 위해 환경설정 파일들이 저장되는 저장소
- - 적용 프레임워크 : 없음
-      
+ - kwasm-config 앱에 제공되는 환경설정 저장소
+       
 3. config-server
- - 환경 설정을 위해 Spring Cloud Config Server를 적용한 Config Server
+ - 다양한 앱에 적용될 환경설정들을 제공하기 위해 Spring Cloud Config Server를 적용한 Config Server
+ - kwasm-config 디렉토리에 저장된 환경설정들을 K-WASM 앱에 제공
  - 적용 프레임워크
    * Spring Cloud Config Server
    * Spring Boot Web
@@ -53,11 +54,12 @@ K-WASM은 클라우드 네이티브 어플리케이션 기반으로 구현하는
    
 5. ui-html
  - HTML 기반 K-WASM앱 UI
+ - 추후 React 등 다양한 프론트앤드 기술들을 활용한 UI 샘플 앱들을 제공할 예정
  - 도커 이미지 생성 파일 및 도커 버전 : Dockerfile / version 4.26.1
  - 도커 이미지 파일 다운로드 링크 : https://hub.docker.com/repository/docker/leehyeopgeon/ui-html/general
 
 6. api-gateway
- - MSA 아키텍처 구현을 위해 API-GATEWAAY 적용
+ - MSA 아키텍처 구현을 위한 API Gateway
  - 적용 프레임워크
    * Reactive 기반 Spring Cloud Gateway
    * Spring Boot Actuator
@@ -66,7 +68,7 @@ K-WASM은 클라우드 네이티브 어플리케이션 기반으로 구현하는
    * Spring Cloud Netflix Eureka Client
 
 7. wasm-manager
- - K-WASM 메타 데이터 생성 및 관리
+ - K-WASM 메타 데이터 생성 및 관리, WASM Compiler 연계
  - 적용 프레임워크
    * Spring Boot Web
    * Spring Boot Actuator
