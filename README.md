@@ -9,21 +9,14 @@ K-WASM은 앞서 설명한 K-PaaS에 적용가능한 WebAssembly로 C언어, C++
 
 <개발환경>
 | 항목 | 내용                                    |
-| ------- | -------------------------------------------- |
-|  언어   | 자바 17(OpenJDK 가능)
-|   공통 주요 프레임워크      |  Spring Boot Frameworks 3.16 |
-|     개발도구    |  IntelliJ |
-|     빌드도구    |  Gradle 8.5 |
-|     인프라 환경    |  K-PaaS 인프라 적용(Ubuntu 22.04, CentOS 8, Rocky Linux 8) |
-|     Docker 버전    |  4.26.1 정상동작 확인(테스트 결과) |
+| -------             | -------------------------------------------- |
+| 언어                | 자바 17(OpenJDK 가능)
+| 공통 주요 프레임워크  |  Spring Boot Frameworks 3.16 |
+| 개발도구    |  IntelliJ |
+| 빌드도구    |  Gradle 8.5 |
+| 인프라 환경    |  K-PaaS 인프라 적용(Ubuntu 22.04, CentOS 8, Rocky Linux 8) |
+| Docker 버전    |  4.26.1 정상동작 확인(테스트 결과) |
 
- - 언어 : 자바 17(OpenJDK 가능)
- - 공통 주요 프레임워크 : Spring Boot Frameworks 3.16
- - 개발도구 : IntelliJ
- - 빌드도구 : Gradle 8.5
- - 인프라 환경 : K-PaaS 인프라 적용(Ubuntu 22.04, CentOS 8, Rocky Linux 8)
- - Docker 버전 : 4.26.1 정상동작 확인(테스트 결과)
-   
 <구현 앱>
 1. app-manager
  - MSA 아키텍처 적용에 따른 다양한 앱을 관리하는 UI 앱 서비스
