@@ -8,6 +8,12 @@ K-WASM은 앞서 설명한 K-PaaS에 적용가능한 WebAssembly로 C언어, C++
 현재 릴리즈된 K-WASM은 C언어를 기반으로 WebAssembly 가능하도록 기능 구현하였으며, 지속적인 연구 개발을 통해 C++, RUST 등 다양한 컴파일을 언어를 제공하도록 하겠습니다.
 
 <개발환경>
+| 항목 | 내용                                    |
+| ------- | -------------------------------------------- |
+|  언어   | 자바 17(OpenJDK 가능)
+|   공통 주요 프레임워크      |  Spring Boot Frameworks 3.16
+|     개발도구    |  IntelliJ
+
  - 언어 : 자바 17(OpenJDK 가능)
  - 공통 주요 프레임워크 : Spring Boot Frameworks 3.16
  - 개발도구 : IntelliJ
