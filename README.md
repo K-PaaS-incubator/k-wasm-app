@@ -24,18 +24,18 @@ K-WASM을 구현하기 위해 사용된 개발 환경으로 실행 환경 구현
 
 K-WASM은 클라우드 네이티브 어플리케이션 기반으로 구현하는 것을 목표로 MSA 아키텍처에 적합하도록 다양한 앱들을 구현하였습니다.
 
-1. app-manager
+### 1. app-manager
  - MSA 아키텍처 적용에 따른 다양한 앱을 관리하는 UI 앱 서비스
  - 적용 프레임워크
    * Spring Boot Admin
  - 도커 이미지 생성 파일 및 도커 버전 : Dockerfile / version 4.26.1
  - 도커 이미지 파일 다운로드 링크 : https://hub.docker.com/repository/docker/leehyeopgeon/app-manager/general
      
-2. kwasm-config
+### 2. kwasm-config
  - 앱에 적용된 환경 설정 분리를 위해 환경설정 파일들이 저장되는 저장소
  - kwasm-config 앱에 제공되는 환경설정 저장소
        
-3. config-server
+### 3. config-server
  - 다양한 앱에 적용될 환경설정들을 제공하기 위해 Spring Cloud Config Server를 적용한 Config Server
  - kwasm-config 디렉토리에 저장된 환경설정들을 K-WASM 앱에 제공
  - 적용 프레임워크
@@ -44,7 +44,7 @@ K-WASM은 클라우드 네이티브 어플리케이션 기반으로 구현하는
  - 도커 이미지 생성 파일 및 도커 버전 : Dockerfile / version 4.26.1
  - 도커 이미지 파일 다운로드 링크 : https://hub.docker.com/repository/docker/leehyeopgeon/config-server/general
 
-4. eureka-server
+### 4. eureka-server
  -  서비스 디스커버리 등 서비스 관리를 위해 구현
  - 적용 프레임워크 :
     * Spring Cloud Netflix Eureka Server
@@ -52,13 +52,13 @@ K-WASM은 클라우드 네이티브 어플리케이션 기반으로 구현하는
  - 도커 이미지 생성 파일 및 도커 버전 : Dockerfile / version 4.26.1
  - 도커 이미지 파일 다운로드 링크 : https://hub.docker.com/repository/docker/leehyeopgeon/eureka-server/general
    
-5. ui-html
+### 5. ui-html
  - HTML 기반 K-WASM앱 UI
  - 추후 React 등 다양한 프론트앤드 기술들을 활용한 UI 샘플 앱들을 제공할 예정
  - 도커 이미지 생성 파일 및 도커 버전 : Dockerfile / version 4.26.1
  - 도커 이미지 파일 다운로드 링크 : https://hub.docker.com/repository/docker/leehyeopgeon/ui-html/general
 
-6. api-gateway
+### 6. api-gateway
  - MSA 아키텍처 구현을 위한 API Gateway
  - 적용 프레임워크
    * Reactive 기반 Spring Cloud Gateway
@@ -67,7 +67,7 @@ K-WASM은 클라우드 네이티브 어플리케이션 기반으로 구현하는
    * Spring Cloud Config Client
    * Spring Cloud Netflix Eureka Client
 
-7. wasm-manager
+### 7. wasm-manager
  - K-WASM 메타 데이터 생성 및 관리, WASM Compiler 연계
  - 적용 프레임워크
    * Spring Boot Web
@@ -77,19 +77,39 @@ K-WASM은 클라우드 네이티브 어플리케이션 기반으로 구현하는
    * Spring Cloud Config Client
    * Spring Cloud Netflix Eureka Client
           
-8. test-data
+### 8. test-data
  - WASM 컴파일 테스트하기 위한 프로그래밍언어 파일 
 
-9. db-scheme
+### 9. db-scheme
  - K-WASM Manager에서 관리하는 메타정보 생성을 위한 SQL
 
-10. kwasm-result-sample
+### 10. kwasm-result-sample
  - test-data의 샘플 C언어를 K-WASM으로 컴파일한 결과 샘플
 
-11. kwasm-sample-web
+### 11. kwasm-sample-web
  - K-WASM 컴파일 결과 파일들이 일반 웹프로젝트에 정상적으로 동작되는지 테스트한 샘플 앱
  - kwasm-result-sample 결과를 기반으로 스프링 부트 웹에 테스트 진행
 
+## 실행방법
+1번부터 순서대로 앱을 배포 및 실행하길 권장함
+
+### 1. DB 배포
+ -  MariaDB or MySQL DB 및 테이블 생성(ORM을 사용하기에 테이블은 자동 생성)
+ -  테이블 생성 SQL은 db-scheme 디렉토리 참고
+  
+### 2. config-server 실행
+   - 환경설정 변경은 application.yml 수정
+  
+### 3. eureka-server 실행
+
+### 4. app-manager 실행
+
+### 5. wasm-manager 실행
+
+### 6. api-gateway 실행
+
+### 7. ui-html 실행
+   
 ## 라이센스
 
 누구나 사용가능한 오픈소스를 지향하며, Apache-2.0 license를 따릅니다.
