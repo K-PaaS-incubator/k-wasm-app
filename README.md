@@ -77,18 +77,8 @@ K-WASM은 클라우드 네이티브 어플리케이션 기반으로 구현하는
    * Spring Cloud Config Client
    * Spring Cloud Netflix Eureka Client
           
-### 8. test-data
- - WASM 컴파일 테스트하기 위한 프로그래밍언어 파일 
-
-### 9. db-scheme
+### 8. db-scheme
  - K-WASM Manager에서 관리하는 메타정보 생성을 위한 SQL
-
-### 10. kwasm-result-sample
- - test-data의 샘플 C언어를 K-WASM으로 컴파일한 결과 샘플
-
-### 11. kwasm-sample-web
- - K-WASM 컴파일 결과 파일들이 일반 웹프로젝트에 정상적으로 동작되는지 테스트한 샘플 앱
- - kwasm-result-sample 결과를 기반으로 스프링 부트 웹에 테스트 진행
 
 ## K-WASM 샘플 및 실행결과
 
