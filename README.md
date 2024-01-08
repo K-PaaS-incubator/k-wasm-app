@@ -1,4 +1,4 @@
-# K-WASM(Korea-WebAssembly)
+# K-WASM(K-WebAssembly)
 
 K-WASM은 K-PaaS 클라우드 컴퓨팅 환경에 적용 가능한 WebAssembly으로 C언어, C++, RUST, 자바 등 다양한 컴파일 프로그래밍언어들을 컴파일하여 웹 브라우저에 실행 가능한 결과물을 제공하는 오픈소스 소프트웨어를 목표로 합니다.
  
