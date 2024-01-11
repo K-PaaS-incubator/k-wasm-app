@@ -22,7 +22,7 @@ spring:
     password: '1234'
     username: 'poly'
     driver-class-name: 'org.mariadb.jdbc.Driver'
-    url: 'jdbc:mariadb://192.168.2.128:3306/myDB'
+    url: 'jdbc:mariadb://10.36.97.194:3306/myDB'
   application:
     name: KWASM-MANAGER
   boot:
