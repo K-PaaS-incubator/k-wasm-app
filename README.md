@@ -115,7 +115,15 @@ K-WASM은 클라우드 네이티브 어플리케이션 기반으로 구현하는
 ### 6. api-gateway 실행
 
 ### 7. ui-html 실행
-   
+
+## 실행화면
+ - UI 서비스 실행화면
+![image](https://github.com/K-PaaS-incubator/k-wasm-app/assets/39357722/0b1a4b8a-be9d-489c-ac0c-9fcc0c9661dc)
+
+* [파일가져오기] : C언어 파일의 읽어 내용을 출력함
+* [실행하기] : K-WASM 컴파일 실행
+* [WASM 다운로드] : K-WASM 컴파일 실행 결과 파일들(.js, .wasm, .html) ZIP으로 압축하여 다운로드
+
 ## 라이센스
 
 누구나 사용가능한 오픈소스를 지향하며, Apache-2.0 license를 따릅니다.
