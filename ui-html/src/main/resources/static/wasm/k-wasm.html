@@ -21,7 +21,7 @@
                 formData.append("fileUpload", $("#fileUpload")[0].files[0]);
 
                 $.ajax({
-                    url: "http://192.168.2.128:14000/api/v1/upload",
+                    url: "http://10.36.97.194:14000/api/v1/upload",
                     type: "post", // 전송방식은 Post
                     data: formData,
                     processData: false,
@@ -44,7 +44,7 @@
             // 파일 다운로드 클릭
             $("#btnDownload").on("click", function () {
 
-                location.href = "http://192.168.2.128:14000/api/v1/download?fileSeq=" + $("#fileSeq").val();
+                location.href = "http://10.36.97.194:14000/api/v1/download?fileSeq=" + $("#fileSeq").val();
 
             })
 
