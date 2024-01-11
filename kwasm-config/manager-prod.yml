@@ -28,7 +28,7 @@ spring:
   boot:
     admin:
       client: # Spring Boot Actuator Admin UI Server
-        url: http://192.168.2.128:15000
+        url: http://10.36.97.194:15000
 Cloud:
   aws:
     s3:
@@ -45,6 +45,6 @@ eureka:
   client:
     register-with-eureka: true
     service-url:
-      defaultZone: http://192.168.2.128:8761/eureka
+      defaultZone: http://10.36.97.194:8761/eureka
     fetch-registry: true
 
