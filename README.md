@@ -20,6 +20,10 @@ K-WASM을 구현하기 위해 사용된 개발 환경으로 실행 환경 구현
 | 인프라 환경    |  K-PaaS 인프라 적용(Ubuntu 22.04, CentOS 8, Rocky Linux 8) |
 | Docker 버전    |  4.26.1 정상동작 확인(테스트 결과) |
 
+## 시스템 기본 구성
+![image](https://github.com/K-PaaS-incubator/k-wasm-app/assets/39357722/e1f630a6-266f-4c0c-b3b9-55082c1d629f)
+
+
 ## 구현 앱
 
 K-WASM은 클라우드 네이티브 어플리케이션 기반으로 구현하는 것을 목표로 MSA 아키텍처에 적합하도록 다양한 앱들을 구현하였습니다.
