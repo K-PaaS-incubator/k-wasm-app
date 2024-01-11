@@ -48,7 +48,7 @@ public class KwasmExecute implements IKwasmExecute {
         // 3단계 . K-WASM 컴파일 결과를 ZIP 파일로 압축하기(.wasm, .html, .js, .c)
         rDTO = fileManageService.compressionZipFileSystem(rDTO);
 
-        // 4단계 . K-WASM 컴파일 결과를 RDBMS에 메타 정보로 저장하기
+        // 4단계 . K-WASM 컴파일 결과를 RDBMS에 파일 메타정보를 저장할 형태 만들기
         FileDTO dto = FileDTO.builder()
                 .orgFileName(orgFileName) // 원래 파일 이름
                 .saveFileName(rDTO.saveFileName())
@@ -59,11 +59,11 @@ public class KwasmExecute implements IKwasmExecute {
                 .regDt(DateUtil.getDateTime("yyyy-MM-dd HH:mm:ss"))
                 .build();
 
-        //RDB 에 파일 정보 저장
-        res = fileManageService.saveFileData(dto);
+        //RDBMS 파일 메타정보 저장
+        FileDTO result = fileManageService.saveFileData(dto);
 
         log.info(this.getClass().getName() + " doExecuteKwasm End!");
 
-        return dto;
+        return result;
     }
 }

@@ -2,7 +2,10 @@ package kr.or.kpass.kwasm.controller;
 
 
 import jakarta.servlet.http.HttpServletRequest;
+import kr.or.kpass.kwasm.dto.ApiResponse;
 import kr.or.kpass.kwasm.dto.FileDTO;
+import kr.or.kpass.kwasm.dto.MsgResult;
+import kr.or.kpass.kwasm.service.IFileManageService;
 import kr.or.kpass.kwasm.service.IKwasmExecute;
 import kr.or.kpass.kwasm.util.CmmUtil;
 import kr.or.kpass.kwasm.util.DateUtil;
@@ -26,25 +29,28 @@ import java.io.FileInputStream;
 @RequestMapping(value = "api/v1")
 public class KwasmController {
 
-    private final IKwasmExecute kwasmExecute;
+    private final IKwasmExecute kwasmExecute; // K-WASM 실행용 서비스
+
+    private final IFileManageService fileManageService; // K-WASM 파일 관리 서비스
+
 
     /**
      * @param mf 프로그래밍 파일
      * @return 저장된 파일 url
      */
-    @RequestMapping("upload")
-    public FileDTO fileUpload(@RequestParam(value = "fileUpload") MultipartFile mf) throws Exception {
+    @PostMapping("upload")
+    public ApiResponse fileUpload(@RequestParam(value = "fileUpload") MultipartFile mf) throws Exception {
 
         log.info(getClass().getName() + " FileUpload Start!");
 
-        int res = 0;
-
         // 업로드하는 실제 파일명
-        String orgFileName = mf.getOriginalFilename();
+        String orgFileFullName = CmmUtil.nvl(mf.getOriginalFilename());
+
+        // 확장자 제외된 실제 파일명
+        String orgFileName = orgFileFullName.substring(0, orgFileFullName.lastIndexOf("."));
 
         // 파일 확장자 가져오기
-        String ext = orgFileName.substring(orgFileName.lastIndexOf(".") + 1,
-                orgFileName.length()).toLowerCase();
+        String ext = orgFileFullName.substring(orgFileFullName.lastIndexOf(".") + 1).toLowerCase();
 
         // 실제 저장되는 파일 이름
         String saveFileName = DateUtil.getDateTime("HHmmss");
@@ -60,23 +66,37 @@ public class KwasmController {
         // K-WASM 실행하기
         FileDTO rDTO = kwasmExecute.doExecuteKwasm(dto, mf);
 
+        // 응답 결과 처리
+        ApiResponse result = ApiResponse.builder()
+                .status(MsgResult.Success.isStatus())
+                .code(MsgResult.Success.getCode())
+                .msg(MsgResult.Success.getMsg())
+                .result(rDTO).build();
+
         log.info(this.getClass().getName() + ".fileUpload End!");
 
-        return rDTO;
+        return result;
 
     }
 
     /**
      * K-WASM 파일 다운로드
      */
-    @PostMapping("download")
+    @GetMapping("download")
     public ResponseEntity<Object> fileDownload(HttpServletRequest request) throws Exception {
 
         log.info(getClass().getName() + " fileDownload Start!");
 
-        String saveFileName = CmmUtil.nvl(request.getParameter("saveFileName"));
-        String saveFilePath = CmmUtil.nvl(request.getParameter("saveFilePath"));
-        String orgFileName = CmmUtil.nvl(request.getParameter("orgFileName"));
+        String fileSeq = CmmUtil.nvl(request.getParameter("fileSeq"));
+        log.info("fileSeq : " + fileSeq);
+
+        FileDTO rDTO = fileManageService.downloadWasmFileSystem(
+                FileDTO.builder().fileSeq(Long.parseLong(fileSeq)).build()
+        );
+
+        String saveFileName = CmmUtil.nvl(rDTO.saveFileName());
+        String saveFilePath = CmmUtil.nvl(rDTO.saveFilePath());
+        String orgFileName = CmmUtil.nvl(rDTO.orgFileName());
 
         log.info("saveFileName : " + saveFileName);
         log.info("saveFilePath : " + saveFilePath);
@@ -93,7 +113,7 @@ public class KwasmController {
 
         // 파일 다운로드 헤더값 설정
         headers.setContentDisposition(ContentDisposition.builder("attachment")
-                .filename(CmmUtil.nvl(orgFileName)).build());
+                .filename(CmmUtil.nvl(orgFileName + ".zip")).build());
 
         log.info(this.getClass().getName() + ".fileDownload End!");
 

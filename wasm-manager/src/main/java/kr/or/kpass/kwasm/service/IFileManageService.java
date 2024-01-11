@@ -33,8 +33,11 @@ public interface IFileManageService {
 
     /**
      * 저장된 파일 메타 정보를 RDBMS 저장하기
+     *
+     * @param pDTO 저장될 파일정보
+     * @return PK 값
      */
-    int saveFileData(FileDTO pDTO) throws Exception;
+    FileDTO saveFileData(FileDTO pDTO) throws Exception;
 
     /**
      * 컴파일된 WASM 결과 파일들 압축하기
@@ -43,4 +46,12 @@ public interface IFileManageService {
      * @return 생성된 압축 파일 정보
      */
     FileDTO compressionZipFileSystem(FileDTO pDTO) throws Exception;
+
+    /**
+     * 압축된 K-WASM 컴파일 결과 다운로드
+     *
+     * @param pDTO 저장될 파일정보
+     * @return 생성된 압축 파일 정보
+     */
+    FileDTO downloadWasmFileSystem(FileDTO pDTO) throws Exception;
 }

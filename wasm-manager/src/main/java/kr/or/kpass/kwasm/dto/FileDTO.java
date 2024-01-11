@@ -6,7 +6,7 @@ import lombok.Builder;
 @JsonInclude(JsonInclude.Include.NON_DEFAULT)
 @Builder
 public record FileDTO(
-        String fileSeq, // File Table SEQ
+        Long fileSeq, // File Table SEQ
         String orgFileName, // 원래 사용자 파일 이름
         String serverFileName, // Object Storage 저장된 파일 이름
         String serverFileUrl, // Object Storage 저장된 파일 URL

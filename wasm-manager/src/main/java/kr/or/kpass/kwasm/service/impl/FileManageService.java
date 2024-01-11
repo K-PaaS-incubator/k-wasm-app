@@ -6,6 +6,7 @@ import com.amazonaws.services.s3.model.AmazonS3Exception;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import kr.or.kpass.kwasm.dto.FileDTO;
 import kr.or.kpass.kwasm.repository.FileRepository;
 import kr.or.kpass.kwasm.repository.entity.FileEntity;
@@ -26,6 +27,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Optional;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -133,10 +135,8 @@ public class FileManageService implements IFileManageService {
 
     @Override
     @Transactional
-    public int saveFileData(FileDTO pDTO) throws Exception {
+    public FileDTO saveFileData(FileDTO pDTO) throws Exception {
         log.info(getClass().getName() + " Meta Data saveFileData Start!");
-
-        int res;
 
         FileEntity pEntity = FileEntity.builder()
                 .orgFileName(pDTO.orgFileName())
@@ -148,13 +148,16 @@ public class FileManageService implements IFileManageService {
                 .regDt(pDTO.regDt())
                 .build();
 
-        fileRepository.save(pEntity);
+        // 데이터 저장 및 PK 값 가져오기
+        Long fileSeq = fileRepository.save(pEntity).getFileSeq();
+        log.info("fileSeq : " + fileSeq);
 
-        res = 1;
+        // 결과값 구조 만들어주기
+        FileDTO dto = FileDTO.builder().fileSeq(fileSeq).build();
 
         log.info(getClass().getName() + " Meta Data saveFileData End!");
 
-        return res;
+        return dto;
     }
 
     /**
@@ -199,6 +202,26 @@ public class FileManageService implements IFileManageService {
                 .saveFileName(pDTO.saveFileName())
                 .ext("zip").build();
         log.info(getClass().getName() + " compressionZip End!");
+
+        return rDTO;
+    }
+
+    /**
+     * 압축된 K-WASM 컴파일 결과 다운로드
+     *
+     * @param pDTO 저장될 파일정보
+     * @return 생성된 압축 파일 정보
+     */
+    @Override
+    public FileDTO downloadWasmFileSystem(FileDTO pDTO) throws Exception {
+
+        log.info(getClass().getName() + " downloadWasmFileSystem Start!");
+
+        Optional<FileEntity> rEntity = fileRepository.findByFileSeq(pDTO.fileSeq());
+
+        FileDTO rDTO = new ObjectMapper().convertValue(rEntity.orElseThrow(), FileDTO.class);
+
+        log.info(getClass().getName() + " downloadWasmFileSystem End!");
 
         return rDTO;
     }
