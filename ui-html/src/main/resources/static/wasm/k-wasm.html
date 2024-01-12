@@ -17,11 +17,16 @@
             // 실행하기 클릭
             $("#btnExecute").on("click", function () {
 
+                if ($("#editor").val() === "") {
+                    alert("업로드된 프로그래밍 코드가 없습니다.");
+                    return;
+                }
+
                 const formData = new FormData();
                 formData.append("fileUpload", $("#fileUpload")[0].files[0]);
 
                 $.ajax({
-                    url: "http://10.36.97.194:14000/api/v1/upload",
+                    url: "http://api.k-wasm.kr/api/v1/upload",
                     type: "post", // 전송방식은 Post
                     data: formData,
                     processData: false,
@@ -34,6 +39,7 @@
                 }).then(function (json) {
                     alert("컴파일을 실행하였습니다. \n 잠시 후 다운로드 하길 바랍니다.")
                     $("#fileSeq").val(json.result.fileSeq); // 컴파일 결과 메타정보 Key
+                    $("#btnDownload").css("display", "block"); // 다운로드 버튼 보여주기
 
                 }).error(function () {
                     alert("에러 발생!")
@@ -43,8 +49,7 @@
 
             // 파일 다운로드 클릭
             $("#btnDownload").on("click", function () {
-
-                location.href = "http://10.36.97.194:14000/api/v1/download?fileSeq=" + $("#fileSeq").val();
+                location.href = "http://api.k-wasm.kr/api/v1/download?fileSeq=" + $("#fileSeq").val();
 
             })
 
@@ -55,6 +60,8 @@
 
             // 파일 가져오기 눌렀을때, 값 출력하기
             $("#fileUpload").on("change", function () {
+                $("#btnDownload").css("display", "none"); // 다운로드 버튼 숨기기
+
                 let file = this.files[0];
                 if (file) {
                     let reader = new FileReader();
@@ -107,10 +114,10 @@
                 <button type="button" class="btn btn-language">C++(준비중)</button>
                 <button type="button" class="btn btn-language">RUST(준비중)</button>
             </div>
-            <textarea class="form-control" id="editor" placeholder="코드를 작성해주세요."></textarea>
-            <button type="button" class="btn btn-execute" id="btnExecute">실행 하기</button>
-            <button type="button" class="btn btn-execute" id="btnFile">파일 가져오기</button>
-            <button type="button" class="btn btn-execute" id="btnDownload">WASM 다운로드</button>
+            <textarea class="form-control" id="editor" placeholder="업로드된 파일의 코드를 보여줍니다." readonly></textarea>
+            <button type="button" class="btn btn-execute" id="btnExecute">실행</button>
+            <button type="button" class="btn btn-execute" id="btnFile">파일업로드</button>
+            <button type="button" class="btn btn-execute" id="btnDownload" style="display: none">결과 다운로드</button>
             <input type="file" id="fileUpload" style="display: none">
         </div>
     </div>
