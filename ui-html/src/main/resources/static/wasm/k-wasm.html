@@ -26,7 +26,7 @@
                 formData.append("fileUpload", $("#fileUpload")[0].files[0]);
 
                 $.ajax({
-                    url: "http://api.k-wasm.kr/api/v1/upload",
+                    url: "https://api.k-wasm.kr/api/v1/upload",
                     type: "post", // 전송방식은 Post
                     data: formData,
                     processData: false,
@@ -49,7 +49,7 @@
 
             // 파일 다운로드 클릭
             $("#btnDownload").on("click", function () {
-                location.href = "http://api.k-wasm.kr/api/v1/download?fileSeq=" + $("#fileSeq").val();
+                location.href = "https://api.k-wasm.kr/api/v1/download?fileSeq=" + $("#fileSeq").val();
 
             })
 
