@@ -21,7 +21,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.FileInputStream;
 
-@CrossOrigin(origins = {"http://www.k-wasm.kr", "http://k-wasm.kr", "http://api.k-wasm.kr"},
+@CrossOrigin(origins = {"http://www.k-wasm.kr", "http://k-wasm.kr", "http://api.k-wasm.kr",
+        "https://www.k-wasm.kr", "https://k-wasm.kr", "https://api.k-wasm.kr"},
         allowedHeaders = {"POST, GET"}, allowCredentials = "true")
 @Slf4j
 @RestController
