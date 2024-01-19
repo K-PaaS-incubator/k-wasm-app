@@ -1,7 +1,7 @@
 
 spring:
   config:
-    import: "optional:configserver:http://10.36.97.194:8888/"
+    import: "optional:configserver:https://config.k-wasm.kr/"
   cloud:
     config:
       name: manager
