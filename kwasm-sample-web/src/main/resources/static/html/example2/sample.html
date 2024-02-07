@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>K-WASM 샘플2 - C언어 함수를 웹에서 계속 호출하기</title>
+    <link rel="stylesheet" href="/css/table.css"/>
+    <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
+    <script src="example2.js"></script>
+</head>
+<body>
+<script>
+
+    // HTML로딩이 완료되고, 실행됨
+    $(document).ready(function () {
+
+        setInterval(function () {
+            let num1 = Math.floor(Math.random() * 11);
+            let num2 = Math.floor(Math.random() * 11);
+
+            // WASM 컴파일된 C언어 함수
+            let result = wasmExports.add(num1, num2);
+
+            console.log(result);
+
+            $("#result").append("<div class=\"divTableRow\">");
+            $("#result").append("<div class=\"divTableCell\">" + num1 + " + " + num2 + " = " + "</div>");
+            $("#result").append("<div class=\"divTableCell\">" + result + "</div>");
+            $("#result").append("</div>");
+
+        }, 5000);
+
+    })
+
+</script>
+
+<h2>K-WASM 샘플2 - C언어 함수를 웹에서 계속 호출하기</h2>
+<hr/>
+<br/>
+<h3>랜덤 숫자 2개 더하는 간단한 예제</h3>
+<div class="divTable minimalistBlack">
+    <div class="divTableHeading">
+        <div class="divTableRow">
+            <div class="divTableHead">수식</div>
+            <div class="divTableHead">결과</div>
+        </div>
+    </div>
+    <div class="divTableBody" id="result"></div>
+</div>
+</body>
+</html>
