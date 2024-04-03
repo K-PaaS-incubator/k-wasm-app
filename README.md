@@ -147,10 +147,10 @@ K-WASM은 클라우드 네이티브 어플리케이션 기반으로 구현하는
 
 ## K-WASM으로 구현가능한 서비스 예
 
-#### OpenCV를 WASM 컴파일한 얼굴인식 데모
+#### 인공지능 플랫폼인 OpenCV와 C++언어로 WASM 컴파일한 얼굴인식 데모
 * https://sample.k-wasm.kr/html/example1/face_detection.html
 
-#### OpenCV를 WASM 컴파일한 영상필터링 데모
+#### 인공지능 플랫폼인 OpenCV와 C++언어로 WASM 컴파일한 영상필터링 데모
 * https://sample.k-wasm.kr/html/example2/cv_scale.html
 
 * #### C언어 함수를 웹에서 실행하는 WASM 데모
