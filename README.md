@@ -138,14 +138,21 @@ K-WASM은 클라우드 네이티브 어플리케이션 기반으로 구현하는
 
 ## 데모서비스
 
-### 1. 웹 데모서비스
+### 1. 웹 서비스
 * https://k-wasm.kr/wasm/k-wasm.html
 
 ### 2. API 서비스
 * https://api.k-wasm.kr 추후 오픈 예정
 
-### 3. WASM 실행 샘플 웹 프로젝트
-* https://sample.k-wasm.kr/html/example2/sample.html
+### 3. WASM 실행 샘플 웹 프로젝트(모든 샘플 소스는 Git에 공개되었습니다.)
+#### OpenCV를 WASM 컴파일한 얼굴인식 데모
+* https://sample.k-wasm.kr/html/example1/face_detection.html
+
+#### OpenCV를 WASM 컴파일한 영상필터링 데모
+* https://sample.k-wasm.kr/html/example2/cv_scale.html
+
+* #### C언어 함수를 웹에서 실행하는 WASM 데모
+* https://sample.k-wasm.kr/html/example3/sample.html
   
 ## 라이센스
 
