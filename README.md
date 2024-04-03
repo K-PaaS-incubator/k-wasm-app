@@ -144,6 +144,9 @@ K-WASM은 클라우드 네이티브 어플리케이션 기반으로 구현하는
 ### 2. API 서비스
 * https://api.k-wasm.kr 추후 오픈 예정
 
+### 3. WASM 실행 샘플 웹 프로젝트
+* https://sample.k-wasm.kr/html/example2/sample.html
+  
 ## 라이센스
 
 누구나 사용가능한 오픈소스를 지향하며, Apache-2.0 license를 따릅니다.
