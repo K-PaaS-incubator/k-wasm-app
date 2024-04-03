@@ -136,7 +136,8 @@ K-WASM은 클라우드 네이티브 어플리케이션 기반으로 구현하는
 ### 예) HelloWorld.c 컴파일 결과 파일들
 ![image](https://github.com/K-PaaS-incubator/k-wasm-app/assets/39357722/3d8e2d69-e3ce-403c-a187-06c7e717c683)
 
-## 데모서비스
+
+## 제공서비스
 
 ### 1. 웹 서비스
 * https://k-wasm.kr/wasm/k-wasm.html
@@ -144,7 +145,8 @@ K-WASM은 클라우드 네이티브 어플리케이션 기반으로 구현하는
 ### 2. API 서비스
 * https://api.k-wasm.kr 추후 오픈 예정
 
-### 3. WASM 실행 샘플 웹 프로젝트(모든 샘플 소스는 Git에 공개되었습니다.)
+## K-WASM으로 구현가능한 서비스 예
+
 #### OpenCV를 WASM 컴파일한 얼굴인식 데모
 * https://sample.k-wasm.kr/html/example1/face_detection.html
 
