@@ -3,18 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>WASM Face Detection (WebAssembly)</title>
+    <title>WASM 컴파일된 OpenCV를 통한 얼굴인식 샘플</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/table.css"/>
 </head>
 
 <body>
+<h2>K-WASM 샘플2 - WASM 컴파일된 OpenCV를 통한 얼굴인식</h2>
+<hr/>
+<br/>
+<div class="divTable minimalistBlack">
+    <div class="divTableHeading">
+        <div class="divTableRow">
+            <div class="divTableHead" width="330px">카메라 영역</div>
+        </div>
+    </div>
+    <div class="divTableBody">
+        <div class="divTableRow">
+            <div class="divTableCell">
+                <div id="container">
+                    <canvas class="center-block" id="canvasOutput"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div id="info" class="text-center">
     WASM is loading...
 </div>
-<div id="container">
-    <canvas class="center-block" id="canvasOutput" width=320 height=240></canvas>
-</div>
-<div class="invisible">
+<div class="invisible" style="display: none">
     <input type="checkbox" id="face" name="classifier" value="face" checked>
     <label for="face">face</label>
     <input type="checkbox" id="eye" name="cascade" value="eye">
@@ -28,7 +45,7 @@
 <script src="/js/dat.gui.min.js"></script>
 <script src="/js/utils.js"></script>
 <script>
-    var featuresReady = checkFeatures(document.getElementById("info"), {webrtc: true, wasm: true});
+    let featuresReady = checkFeatures(document.getElementById("info"), {webrtc: true, wasm: true});
 </script>
 <script src="/js/index.js"></script>
 <script>
