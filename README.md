@@ -153,7 +153,7 @@ K-WASM은 클라우드 네이티브 어플리케이션 기반으로 구현하는
 #### 인공지능 플랫폼인 OpenCV와 C++언어로 WASM 컴파일한 영상필터링 데모
 * https://sample.k-wasm.kr/html/example2/cv_scale.html
 
-* #### C언어 함수를 웹에서 실행하는 WASM 데모
+#### C언어 함수를 웹에서 실행하는 WASM 데모
 * https://sample.k-wasm.kr/html/example3/sample.html
   
 ## 라이센스
