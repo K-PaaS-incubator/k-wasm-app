@@ -20,9 +20,9 @@ spring:
       max-request-size: 10MB
   datasource:
     password: '1234'
-    username: 'poly'
+    username: 'web_user'
     driver-class-name: 'org.mariadb.jdbc.Driver'
-    url: 'jdbc:mariadb://db.k-wasm.kr:3306/myDB'
+    url: 'jdbc:mariadb://10.200.1.213:3306/myDB'
   application:
     name: KWASM-MANAGER
   boot:
@@ -45,6 +45,6 @@ eureka:
   client:
     register-with-eureka: true
     service-url:
-      defaultZone: https://eureka.k-wasm.kr/eureka
+      defaultZone: https://10.200.1.214:8761/eureka
     fetch-registry: true
 
