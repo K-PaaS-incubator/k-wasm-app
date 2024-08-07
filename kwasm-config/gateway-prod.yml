@@ -20,7 +20,7 @@ eureka:
   client:
     register-with-eureka: true
     service-url:
-      defaultZone: https://eureka.k-wasm.kr/eureka
+      defaultZone: http://playpark-cp.k-paas.org:31795
     fetch-registry: true
 spring:
   application:
@@ -28,6 +28,6 @@ spring:
   boot:
     admin:
       client: # Spring Boot Actuator Admin UI Server
-        url: https://manager.k-wasm.kr
+        url: http://playpark-cp.k-paas.org:31026
 server:
   port: '14000'

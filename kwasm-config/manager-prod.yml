@@ -22,13 +22,13 @@ spring:
     password: '1234'
     username: 'web_user'
     driver-class-name: 'org.mariadb.jdbc.Driver'
-    url: 'jdbc:mariadb://10.200.1.213:3306/myDB'
+    url: 'jdbc:mariadb://playpark-cp.k-paas.org:30196:3306/myDB'
   application:
     name: KWASM-MANAGER
   boot:
     admin:
       client: # Spring Boot Actuator Admin UI Server
-        url: https://manager.k-wasm.kr
+        url: http://playpark-cp.k-paas.org:31026
 Cloud:
   aws:
     s3:
@@ -45,6 +45,5 @@ eureka:
   client:
     register-with-eureka: true
     service-url:
-      defaultZone: https://10.200.1.214:8761/eureka
+      defaultZone: http://playpark-cp.k-paas.org:31795
     fetch-registry: true
-
