@@ -22,7 +22,7 @@ spring:
     password: '1234'
     username: 'web_user'
     driver-class-name: 'org.mariadb.jdbc.Driver'
-    url: 'jdbc:mariadb://playpark-cp.k-paas.org:30196:3306/myDB'
+    url: 'jdbc:mariadb://playpark-cp.k-paas.org:32157:4306/myDB'
   application:
     name: KWASM-MANAGER
   boot:
