@@ -155,7 +155,10 @@ K-WASM은 클라우드 네이티브 어플리케이션 기반으로 구현하는
 
 #### C언어 함수를 웹에서 실행하는 WASM 데모
 * https://sample.k-wasm.kr/html/example3/sample.html
-  
+
+#### LLM 기반 K-WASM 서비스 데모
+* https://ui.k-wasm.kr
+ 
 ## 라이센스
 
 누구나 사용가능한 오픈소스를 지향하며, Apache-2.0 license를 따릅니다.
