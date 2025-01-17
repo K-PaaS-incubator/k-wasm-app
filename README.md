@@ -63,7 +63,7 @@
 ### **8. RAG-LLM**
 - LLM을 활용한 RAG 서비스.
 - **프레임워크:** Spring Boot 3.x MongoDB, OpenFeign.
-- 
+  
 ---
 
 ## 🧩 실행 방법
