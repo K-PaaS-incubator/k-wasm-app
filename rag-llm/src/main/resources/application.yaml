@@ -1,0 +1,37 @@
+server:
+  port: 11000
+
+llama:
+  api:
+    url: http://kopo-traine-llm-service--b2edd-100735033-368bfb382615.kr.lb.naverncp.com:12000
+
+embedding:
+  api:
+    url: http://kopo-traine-embedding-se-349dc-100732961-1b89201df584.kr.lb.naverncp.com:12000
+
+spring:
+  application:
+    name: spring-ai
+  data:
+    mongodb:
+      host: kopo-traine-my-mongodb-a4db0-100733095-958d25d77187.kr.lb.naverncp.com
+      port: 27017
+      database: myDB
+      username: poly
+      password: poly1234
+
+logging:
+  level:
+    org:
+      springframework:
+        data:
+          mongodb:
+            core:
+              MongoTemplate: DEBUG
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 6000000  # ?? ???? (???)
+        readTimeout: 6000000     # ?? ???? (???)
+
