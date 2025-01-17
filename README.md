@@ -60,6 +60,10 @@
 - K-WASM 메타데이터 관리 및 WASM 컴파일러 연계.
 - **프레임워크:** Spring Data JPA, Spring Boot Actuator.
 
+### **8. RAG-LLM**
+- LLM을 활용한 RAG 서비스.
+- **프레임워크:** Spring Boot 3.x MongoDB, OpenFeign.
+- 
 ---
 
 ## 🧩 실행 방법
